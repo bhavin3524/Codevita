@@ -8,13 +8,9 @@ class ConnectedGraph {
 	
 	
 	
-	public void addEdge()
-	{
-		
-	}
+	
 }
 public class ConnnectedComponents {
-	
 	public static void main(String[] args) {
 		
 	}
