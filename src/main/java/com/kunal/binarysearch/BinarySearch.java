@@ -6,6 +6,9 @@ public class BinarySearch {
 		System.out.println("index of 55 is:"+binarySearch(arr, 77));
 	}
 	
+	
+//	return the index
+//	return -1 if it is does not exists
 	static int binarySearch(int arr[],int target) {
 		int start = 0;
 		int end = arr.length - 1;

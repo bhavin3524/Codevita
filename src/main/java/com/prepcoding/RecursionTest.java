@@ -6,11 +6,11 @@ class Example
 		if (n == 0) {
 			return;
 		}
-		System.out.println("Pre" + n);
+		System.out.println("Pre:" + n);
 		puzz(n - 1);
-		System.out.println("In" + n);
+		System.out.println("In:" + n);
 		puzz(n - 1);
-		System.out.println("Post" + n);
+		System.out.println("Post:" + n);
 	}
 }
 public class RecursionTest {
