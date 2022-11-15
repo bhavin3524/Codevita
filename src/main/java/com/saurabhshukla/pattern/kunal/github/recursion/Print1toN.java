@@ -9,7 +9,9 @@ class Sequence
 			return;
 		}
 		System.out.println(n);
+
 		print1ToN(n-1);
+
 		System.out.println(n);
 	}
 }
