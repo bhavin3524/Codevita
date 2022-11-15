@@ -1,4 +1,4 @@
-package com.kunal.recursion.pattern;
+package com.saurabhshukla.pattern.kunal.recursion.pattern;
 
 
 class Stair

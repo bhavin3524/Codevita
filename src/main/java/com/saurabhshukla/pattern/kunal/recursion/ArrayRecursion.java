@@ -1,4 +1,4 @@
-package com.kunal.recursion;
+package com.saurabhshukla.pattern.kunal.recursion;
 
 import java.util.ArrayList;
 import java.util.HashMap;

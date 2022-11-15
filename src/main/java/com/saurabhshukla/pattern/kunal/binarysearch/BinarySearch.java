@@ -1,4 +1,4 @@
-package com.kunal.binarysearch;
+package com.saurabhshukla.pattern.kunal.binarysearch;
 
 public class BinarySearch {
 	public static void main(String[] args) {

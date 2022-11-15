@@ -1,4 +1,4 @@
-package com.kunal.recursion;
+package com.saurabhshukla.pattern.kunal.recursion;
 
 public class FiboExample {
 	public static int fibo(int n) {

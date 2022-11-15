@@ -1,4 +1,4 @@
-package com.kunal.github.recursion;
+package com.saurabhshukla.pattern.kunal.github.recursion;
 
 public class SubSequence {
 	public static void main(String[] args) {

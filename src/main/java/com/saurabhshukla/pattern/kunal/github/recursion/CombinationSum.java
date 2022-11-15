@@ -1,4 +1,4 @@
-package com.kunal.github.recursion;
+package com.saurabhshukla.pattern.kunal.github.recursion;
 
 import java.util.ArrayList;
 import java.util.List;

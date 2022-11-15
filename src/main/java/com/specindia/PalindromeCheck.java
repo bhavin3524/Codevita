@@ -1,7 +1,6 @@
 package com.specindia;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.HashMap;
 
 public class PalindromeCheck {
     public static void main(String[] args) {
@@ -22,13 +21,13 @@ public class PalindromeCheck {
 //        list.forEach();
         String str="abcd";
 
-        for(int i=0;i<str.length();i++)
-        {
-            for(int j=0;j<str.length();j++)
-            {
+        for (int i = 0; i < str.length(); i++) {
+            for (int j = 0; j < str.length(); j++) {
                 String sub = str.substring(i, j + 1);
                 System.out.println(sub);
             }
         }
+
+        HashMap<String, Integer> hashMap = new HashMap<>();
     }
 }

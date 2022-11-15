@@ -1,4 +1,4 @@
-package com.kunal.recursion;
+package com.saurabhshukla.pattern.kunal.recursion;
 
 class Example
 {												//abc

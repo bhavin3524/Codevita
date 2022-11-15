@@ -1,10 +1,9 @@
-package com.kunal.github.recursion;
+package com.saurabhshukla.pattern.kunal.github.recursion;
 
 /*package whatever //do not write package name here */
 
 import java.util.*;
 import java.lang.*;
-import java.io.*;
 
 class Giconnaci
 {

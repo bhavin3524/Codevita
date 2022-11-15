@@ -1,4 +1,4 @@
-package com.kunal.binarysearch;
+package com.saurabhshukla.pattern.kunal.binarysearch;
 
 
 class Ceil
