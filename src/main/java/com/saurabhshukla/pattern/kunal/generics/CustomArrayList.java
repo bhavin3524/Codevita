@@ -1,4 +1,4 @@
-package com.kunal.generics;
+package com.saurabhshukla.pattern.kunal.generics;
 
 import java.util.ArrayList;
 
