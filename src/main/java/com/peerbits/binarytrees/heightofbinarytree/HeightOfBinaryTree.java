@@ -37,14 +37,66 @@ class Node {
 	}
 }
 
-class BinaryTree
-{
+class BinaryTree {
 	
-}
-public class HeightOfBinaryTree {
+	private int TREE_MAX_HEIGHT=0;
 	
-	public static void main(String[] args) {
-		
+	Node rootNode;
+	
+	
+
+	public BinaryTree() {
 	}
 
+	public BinaryTree(Node rootNode) {
+		this.rootNode = rootNode;
+	}
+
+	int getHeightOfBinaryTree(Node node, int height) {
+		if (node == null || node.getLeftNode() == null || node.getRightNode() == null) {
+			return height + 1;
+		}
+		height = height + 1;
+		int leftHeight = getHeightOfBinaryTree(node.getLeftNode(), height);
+
+		height = height - 1;
+		int rightHeight = getHeightOfBinaryTree(node.getRightNode(), height);
+
+		return (leftHeight > rightHeight) ? leftHeight : rightHeight;
+	}
+
+	public Node getRootNode() {
+		return rootNode;
+	}
+
+	public void setRootNode(Node rootNode) {
+		this.rootNode = rootNode;
+	}
+
+	public int getTREE_MAX_HEIGHT() {
+		return TREE_MAX_HEIGHT;
+	}
+
+	public void setTREE_MAX_HEIGHT(int tREE_MAX_HEIGHT) {
+		TREE_MAX_HEIGHT = tREE_MAX_HEIGHT;
+	}
+}
+
+public class HeightOfBinaryTree {
+
+	public static void main(String[] args) {
+
+		BinaryTree binaryTree = new BinaryTree();
+		binaryTree.setRootNode(new Node(1));
+		binaryTree.getRootNode().setLeftNode(new Node(2));
+		binaryTree.getRootNode().setRightNode(new Node(3));
+		binaryTree.getRootNode().getLeftNode().setLeftNode(new Node(4));
+		binaryTree.getRootNode().getLeftNode().setRightNode(new Node(5));
+		binaryTree.getRootNode().getLeftNode().getRightNode().setLeftNode(new Node(6));
+		binaryTree.getRootNode().setRightNode(new Node(3));
+
+		System.out.println("=======Height of binary tree ====");
+		System.out.println(binaryTree.getHeightOfBinaryTree(binaryTree.getRootNode(), 1));
+
+	}
 }

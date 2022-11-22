@@ -48,7 +48,7 @@ class BinaryTree {
 	}
 
 	public void printLevelOrder() {
-		Queue<Node> queueList = new LinkedList<Node>();
+		Queue<Node> queueList = new LinkedList<>();
 
 		queueList.add(rootNode);
 
