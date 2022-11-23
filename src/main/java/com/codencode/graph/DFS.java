@@ -1,10 +1,6 @@
 package com.codencode.graph;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 //	Example of Depth fist search
@@ -40,11 +36,11 @@ class Graph
 			return ;
 		}
 		LinkedList<Integer> neighborList = graph.get(source);
-		
-		neighborList.forEach(neighbor->{
-			if(!visitedList.get(neighbor)) {
+
+		neighborList.forEach(neighbor -> {
+			if (!visitedList.get(neighbor)) {
 				currentPath.add(neighbor);
-				DFS(neighbor, destination,currentPath);
+				DFS(neighbor, destination, currentPath);
 				currentPath.remove(neighbor);
 			}
 		});
