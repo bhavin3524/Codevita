@@ -8,7 +8,7 @@ class Example {
 	}
 
 	public int addition(int a, int b) {
-		return a + b;
+		return (a + b);
 	}
 	
 	(int a,int b)->{
