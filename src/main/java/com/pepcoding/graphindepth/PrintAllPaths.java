@@ -38,14 +38,13 @@ class GraphImpl
 		
 		String path=pathsofar+source;
 		
-		neighbors.forEach((neighbor)->{
-			
-			if(isVisited.containsKey(neighbor)==false || isVisited.get(source)==false)
-			{
-				printAllPathsFromSourceToDestination(graphMap, isVisited, neighbor, destination, path,source);
+		neighbors.forEach((neighbor) -> {
+
+			if (isVisited.containsKey(neighbor) == false || isVisited.get(source) == false) {
+				printAllPathsFromSourceToDestination(graphMap, isVisited, neighbor, destination, path, source);
 			}
 //			isVisited.put(source, false);
-			
+
 		});
 		
 		
