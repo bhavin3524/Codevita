@@ -75,6 +75,7 @@ public class DFS {
 		
 		
 		Scanner sc = new Scanner(System.in);
+		Thread thread = new Thread();
 		System.out.println("Enter the number of vertices and edges");
 		int vertexes = sc.nextInt();
 		int edges = sc.nextInt();

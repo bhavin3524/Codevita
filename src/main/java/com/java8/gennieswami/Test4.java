@@ -11,9 +11,9 @@ class Example {
 		return (a + b);
 	}
 	
-	(int a,int b)->{
-		return a-b;
-	}
+//	(int a,int b)->{
+//		return a-b;
+//	}
 }
 
 public class Test4 {

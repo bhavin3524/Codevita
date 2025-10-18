@@ -46,8 +46,8 @@ public class PalindromeCheck {
 		
 		Reverse r = new Reverse();
 		
-		String str="abmadambc";
-		int S=3;
+//		String str="abmadambc";
+//		int S=3;
 		
 		list.add(3);
 		list.add(4);
@@ -71,7 +71,7 @@ public class PalindromeCheck {
 			}
 //		}
 		
-		System.out.println("ans:"+result);
+//		System.out.println("ans:"+result);
 		
 	}
 	

@@ -22,10 +22,10 @@ public class AnonymousFunEx {
 		System.out.println("normal method ex....");
 	}
 
-	()
-	{
-		System.out.println("Anonymous method example....");
-	}
+//	()
+//	{
+//		System.out.println("Anonymous method example....");
+//	}
 
 	public static void main(String[] args) {
 			AnonymousFunEx anonymousFunEx = new AnonymousFunEx();

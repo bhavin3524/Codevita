@@ -1,0 +1,208 @@
+<!--
+Java Collections Framework Cheat Sheet
+Single-file HTML + CSS + small JS for searching and easy editing.
+Open this file in any browser, edit the content directly, or copy into your own project.
+
+Sections included: Core Interfaces, List implementations, Set implementations, Queue/Deque, Map implementations,
+and a highlighted "Most Useful Methods" quick reference for interview use.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Java Collections Framework — Cheat Sheet</title>
+    <style>
+        :root{
+          --bg: #ffffff;
+          --card:#f7f9fb;
+          --accent:#ff7a59; /* orange */
+          --muted:#6b7280;
+          --text:#0f172a;
+          --glass: rgba(15,23,42,0.03);
+          --shadow: 0 6px 18px rgba(11,20,40,0.06);
+          --max-width: 1100px;
+          font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+        html,body{height:100%;margin:0;background:var(--bg);color:var(--text)}
+        .wrap{max-width:var(--max-width);margin:28px auto;padding:24px}
+        header{display:flex;align-items:center;gap:16px}
+        .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ffb07a);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;box-shadow:var(--shadow)}
+        h1{margin:0;font-size:26px}
+        p.lead{margin:6px 0 20px;color:var(--muted)}
+        .controls{display:flex;gap:12px;margin-top:18px;align-items:center}
+        .search{padding:10px 12px;border-radius:10px;border:1px solid #e6e9ee;width:320px}
+        .btn{background:var(--accent);color:white;padding:10px 12px;border-radius:10px;border:none;cursor:pointer}
+        .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+        @media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+        @media (max-width:640px){.grid{grid-template-columns:1fr}}
+
+        .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow);min-height:160px}
+        .card h3{margin:0 0 8px;font-size:16px}
+        .muted{color:var(--muted);font-size:13px;margin-bottom:8px}
+        ul.methods{margin:0;padding-left:18px}
+        ul.methods li{margin:8px 0;line-height:1.32}
+        code{background:var(--glass);padding:3px 7px;border-radius:6px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;font-size:13px}
+
+        /* Highlight block for "Most Useful" */
+        .highlight{grid-column:span 3;background:linear-gradient(90deg,#fff6f2,#ffffff);border-left:6px solid var(--accent);}
+        @media (max-width:980px){.highlight{grid-column:span 2}}
+        @media (max-width:640px){.highlight{grid-column:span 1}}
+
+        /* printable tweaks */
+        @media print{
+          .controls, header p.lead, .btn{display:none}
+          body{background:white}
+        }
+
+        /* small helpful footer */
+        footer{margin-top:20px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
+        .small-actions{display:flex;gap:8px}
+        .chip{background:#fff;border:1px solid #eee;padding:6px 8px;border-radius:8px;font-size:13px}
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <header>
+        <div class="logo">J</div>
+        <div>
+            <h1>Java Collections Framework — Cheat Sheet</h1>
+            <p class="lead">Concise reference of interfaces, common implementations, and frequently used methods. Edit freely — this is a single-file HTML you can copy/paste into slides or open in a browser.</p>
+        </div>
+    </header>
+
+    <div class="controls">
+        <input id="q" class="search" placeholder="Search methods or types (e.g. ArrayList, poll, Map)" oninput="search()" />
+        <button class="btn" onclick="resetSearch()">Reset</button>
+        <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
+            <span class="chip">Editable</span>
+            <button class="chip" onclick="window.print()">Print</button>
+        </div>
+    </div>
+
+    <main>
+        <section class="grid">
+            <article class="card" data-tags="collection">
+                <h3>Core: Collection&lt;E&gt;</h3>
+                <div class="muted">Root interface — common methods</div>
+                <ul class="methods">
+                    <li><code>boolean add(E e)</code> — add element</li>
+                    <li><code>boolean remove(Object o)</code> — remove first occurrence</li>
+                    <li><code>boolean contains(Object o)</code> — membership test</li>
+                    <li><code>int size()</code> — number of elements</li>
+                    <li><code>boolean isEmpty()</code>, <code>void clear()</code>, <code>Object[] toArray()</code></li>
+                </ul>
+            </article>
+
+            <article class="card" data-tags="list arraylist linkedlist">
+                <h3>List&lt;E&gt; / ArrayList</h3>
+                <div class="muted">Ordered, indexed collection — allows duplicates</div>
+                <ul class="methods">
+                    <li><code>E get(int index)</code>, <code>E set(int index, E e)</code></li>
+                    <li><code>void add(int index, E e)</code>, <code>boolean add(E e)</code>, <code>boolean addAll(Collection)</code></li>
+                    <li><code>E remove(int index)</code>, <code>boolean remove(Object o)</code></li>
+                    <li><code>int indexOf(Object o)</code>, <code>int lastIndexOf(Object o)</code>, <code>List&lt;E&gt; subList(int,int)</code></li>
+                    <li><strong>When to use:</strong> ArrayList for fast random access; avoid many mid-list inserts.</li>
+                </ul>
+            </article>
+
+            <article class="card" data-tags="linkedlist deque">
+                <h3>LinkedList&lt;E&gt; (List, Deque)</h3>
+                <div class="muted">Doubly-linked — fast inserts/removals at ends</div>
+                <ul class="methods">
+                    <li><code>addFirst(E)</code>, <code>addLast(E)</code>, <code>getFirst()</code>, <code>getLast()</code></li>
+                    <li><code>removeFirst()</code>, <code>removeLast()</code>, <code>pollFirst()</code>, <code>pollLast()</code></li>
+                    <li><code>get(int index)</code> (O(n) traversal) — use for small lists or when end operations dominate</li>
+                </ul>
+            </article>
+
+            <article class="card" data-tags="set hashset linkedhashset treeset">
+                <h3>Set&lt;E&gt; (HashSet / LinkedHashSet / TreeSet)</h3>
+                <div class="muted">Unique elements — different implementations for order/lookup</div>
+                <ul class="methods">
+                    <li><code>boolean add(E)</code>, <code>boolean remove(Object)</code>, <code>boolean contains(Object)</code></li>
+                    <li><code>HashSet</code> — O(1) average ops, no ordering</li>
+                    <li><code>LinkedHashSet</code> — preserves insertion order</li>
+                    <li><code>TreeSet</code> — sorted order, O(log n) ops (uses Comparator or natural ordering)</li>
+                </ul>
+            </article>
+
+            <article class="card" data-tags="queue priorityqueue">
+                <h3>Queue&lt;E&gt; / PriorityQueue</h3>
+                <div class="muted">FIFO or priority-based ordering</div>
+                <ul class="methods">
+                    <li><code>boolean offer(E)</code> vs <code>boolean add(E)</code> (offer doesn't throw when full)</li>
+                    <li><code>E poll()</code> — retrieve &amp; remove head (null if empty)</li>
+                    <li><code>E peek()</code> — retrieve head without removing</li>
+                    <li><code>PriorityQueue</code> — orders by natural ordering or given <code>Comparator</code></li>
+                </ul>
+            </article>
+
+            <article class="card" data-tags="deque arraydeque stack">
+                <h3>Deque&lt;E&gt; / ArrayDeque</h3>
+                <div class="muted">Double-ended queue — use as stack or queue (preferred over Stack)</div>
+                <ul class="methods">
+                    <li>Head: <code>addFirst/offerFirst</code>, <code>pollFirst/removeFirst</code>, <code>peekFirst/getFirst</code></li>
+                    <li>Tail: <code>addLast/offerLast</code>, <code>pollLast/removeLast</code>, <code>peekLast/getLast</code></li>
+                    <li>Stack-style: <code>push()</code>, <code>pop()</code>, <code>peek()</code></li>
+                </ul>
+            </article>
+
+            <article class="card" data-tags="map hashmap linkedhashmap treemap">
+                <h3>Map&lt;K,V&gt; (HashMap / LinkedHashMap / TreeMap)</h3>
+                <div class="muted">Key-value pairs — different implementations for ordering &amp; performance</div>
+                <ul class="methods">
+                    <li><code>V put(K key, V value)</code>, <code>V get(Object key)</code></li>
+                    <li><code>V remove(Object key)</code>, <code>boolean containsKey(Object)</code>, <code>boolean containsValue(Object)</code></li>
+                    <li><code>Set&lt;K&gt; keySet()</code>, <code>Collection&lt;V&gt; values()</code>, <code>Set&lt;Entry&lt;K,V&gt;&gt; entrySet()</code></li>
+                    <li><code>HashMap</code> — average O(1) get/put, allows null key/value</li>
+                    <li><code>LinkedHashMap</code> — predictable iteration order (insertion or access order)
+                    <li><code>TreeMap</code> — sorted by key, O(log n)</li>
+                </ul>
+            </article>
+
+            <article class="card highlight" data-tags="useful most">
+                <h3>Most Useful Methods — Quick Drill (Interview Focus)</h3>
+                <div class="muted">Memorize the signatures and complexity where relevant</div>
+                <ul class="methods">
+                    <li><strong>ArrayList</strong>: <code>get(int)</code> O(1), <code>add(E)</code> amortized O(1), <code>add(int,E)</code> O(n)</li>
+                    <li><strong>LinkedList</strong>: <code>addFirst/last</code> O(1), <code>get(index)</code> O(n)</li>
+                    <li><strong>HashMap</strong>: <code>get/put</code> average O(1), worst O(n) (pathological), use good hashCode</li>
+                    <li><strong>Concurrent</strong> note: look into <code>ConcurrentHashMap</code> &amp; thread-safe collections for production systems</li>
+                    <li><strong>Queue</strong>: <code>offer/poll/peek</code> vs <code>add/remove/element</code> differences on empty/full</li>
+                    <li><strong>Deque</strong>: prefer <code>ArrayDeque</code> over legacy <code>Stack</code> and over <code>LinkedList</code> for stack/queue usage where possible</li>
+                </ul>
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div style="color:var(--muted)">Tip: Click any text and edit directly. Copy-paste into slides or export as PDF.</div>
+        <div class="small-actions">
+            <div class="chip">Printable</div>
+            <div class="chip">Editable</div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    function search(){
+      const q = document.getElementById('q').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.card');
+      if(!q){cards.forEach(c=>c.style.display='block');return}
+      cards.forEach(c=>{
+        const text = (c.innerText || '').toLowerCase();
+        const tags = c.dataset.tags || '';
+        if(text.includes(q) || tags.includes(q)) c.style.display='block'; else c.style.display='none';
+      })
+    }
+    function resetSearch(){document.getElementById('q').value='';search();}
+    // make all method lists contenteditable for quick custom edits
+    document.querySelectorAll('.card').forEach(c=>{c.contentEditable = false;});
+    // Double-click a card to toggle editable state
+    document.querySelectorAll('.card').forEach(c=>c.addEventListener('dblclick',()=>{c.contentEditable = c.contentEditable !== 'true' ? 'true' : 'false'; c.style.outline = c.contentEditable === 'true' ? '2px dashed var(--accent)' : 'none';}));
+</script>
+</body>
+</html>
