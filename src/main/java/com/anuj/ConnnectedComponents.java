@@ -1,7 +1,6 @@
 package com.anuj;
 
-import java.util.HashMap;
-import java.util.TreeSet;
+import java.util.*;
 
 class ConnectedGraph {
 	HashMap<Integer, TreeSet<Integer>> graphMap=new HashMap<>();
@@ -12,6 +11,6 @@ class ConnectedGraph {
 }
 public class ConnnectedComponents {
 	public static void main(String[] args) {
-		
+
 	}
 }
